@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.CandidateEntity;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.CandidateRepository;
+import br.com.lucasazevedo.api_gestao_de_vagas.exceptions.UserFoundException;
 import jakarta.validation.Valid;
 
 @RestController
@@ -18,6 +19,11 @@ public class CandidateController {
 
     @PostMapping("/")
     public CandidateEntity create( @Valid @RequestBody CandidateEntity CandidateEntity ) {
+        this.candidateRepository
+        .findByUsernameOrEmail(CandidateEntity.getUsername(), CandidateEntity.getEmail())
+        .ifPresent(user -> {
+            throw new UserFoundException();
+        });
         return this.candidateRepository.save(CandidateEntity);
     }
 

@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
@@ -22,7 +23,8 @@ public class CandidateEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
-
+    
+    @NotBlank
     @Pattern(regexp = "\\S+", message = "O campo [username] não pode ter espaços")
     private String username;
 

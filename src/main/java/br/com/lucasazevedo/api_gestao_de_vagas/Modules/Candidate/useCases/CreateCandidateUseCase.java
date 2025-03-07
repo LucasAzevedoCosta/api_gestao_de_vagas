@@ -1,6 +1,7 @@
 package br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.useCases;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.CandidateEntity;
@@ -13,13 +14,19 @@ public class CreateCandidateUseCase {
     @Autowired
     private CandidateRepository candidateRepository;
 
-    public CandidateEntity execute(CandidateEntity CandidateEntity) {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public CandidateEntity execute(CandidateEntity candidateEntity) {
         this.candidateRepository
-        .findByUsernameOrEmail(CandidateEntity.getUsername(), CandidateEntity.getEmail())
+        .findByUsernameOrEmail(candidateEntity.getUsername(), candidateEntity.getEmail())
         .ifPresent(user -> {
             throw new UserFoundException();
         });
-        return this.candidateRepository.save(CandidateEntity);
-    }
 
+        var password = passwordEncoder.encode(candidateEntity.getPassword());
+        candidateEntity.setPassword(password);
+
+        return this.candidateRepository.save(candidateEntity);
+    }
 }

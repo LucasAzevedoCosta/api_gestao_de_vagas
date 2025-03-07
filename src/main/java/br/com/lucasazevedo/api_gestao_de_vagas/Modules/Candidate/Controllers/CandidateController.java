@@ -19,7 +19,7 @@ public class CandidateController {
     private CreateCandidateUseCase createCandidateUseCase;
 
     @PostMapping("/")
-    public ResponseEntity<Object> create( @Valid @RequestBody CandidateEntity CandidateEntity ) {
+    public ResponseEntity<Object> create(@Valid @RequestBody CandidateEntity CandidateEntity ) {
         try{
             var result = this.createCandidateUseCase.execute(CandidateEntity);
             return ResponseEntity.ok().body(result);

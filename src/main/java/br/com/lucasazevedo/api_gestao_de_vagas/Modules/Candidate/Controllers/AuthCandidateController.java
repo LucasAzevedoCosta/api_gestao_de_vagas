@@ -13,13 +13,13 @@ import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.dto.AuthCandida
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.useCases.AuthCandidateUseCase;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/candidate")
 public class AuthCandidateController {
 
     @Autowired
     private AuthCandidateUseCase authCandidateUseCase;
 
-    @RequestMapping("/candidate")
+    @RequestMapping("/auth")
     public ResponseEntity<Object> auth(@RequestBody AuthCandidateRequestDTO authCandidateRequestDTO) {
 
         try {

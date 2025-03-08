@@ -14,7 +14,7 @@ import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Company.dto.AuthCompanyDT
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Company.useCases.AuthCompanyUseCase;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/company")
 public class AuthCompanyController {
     
 
@@ -22,7 +22,7 @@ public class AuthCompanyController {
     private AuthCompanyUseCase authCompanyUseCase;
 
 
-    @PostMapping("/company")
+    @PostMapping("/auth")
     public ResponseEntity<Object> create(@RequestBody AuthCompanyDTO authCompanyDTO) {
         try {
             var result = authCompanyUseCase.execute(authCompanyDTO);

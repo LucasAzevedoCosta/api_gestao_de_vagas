@@ -11,7 +11,6 @@ import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Company.repositories.JobR
 @Service
 public class ListAllJobsByFilterUseCase {
     
-
     @Autowired
     JobRepository jobRepository;
 

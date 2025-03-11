@@ -68,14 +68,14 @@ public class CandidateController {
 
     @GetMapping("/job")
     @PreAuthorize("hasRole('CANDIDATE')")
-    @Tag(name = "Vagas", description = "Vagas diponiveis para o candidato visualizar")
+    @Tag(name = "Candidato", description = "Vagas diponiveis para o candidato visualizar")
     @Operation(summary = "Listagem de vagas disponível para o candidato", description = "Essa função é responsável por listar todas as vagas disponíveis, baseada na pesquisa do candidato")
+    @SecurityRequirement(name = "jwt_auth")
     @ApiResponses({
         @ApiResponse(responseCode = "200", content = {
             @Content(array = @ArraySchema(schema = @Schema(implementation = JobEntity.class)))
         })
     })
-    @SecurityRequirement(name = "jwt_auth")
     public List<JobEntity> findJobByFilter(@RequestParam String filter) {
         return this.listAllJobsByFilterUseCase.execute(filter);
     }

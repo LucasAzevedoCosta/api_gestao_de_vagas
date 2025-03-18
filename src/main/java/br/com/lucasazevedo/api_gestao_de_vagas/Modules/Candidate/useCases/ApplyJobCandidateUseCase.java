@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.entity.ApplyJobEntity;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.repository.ApplyJobRepository;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.repository.CandidateRepository;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Company.repositories.JobRepository;
@@ -25,7 +26,7 @@ public class ApplyJobCandidateUseCase {
 
     // ID do candidato
     // ID da vaga
-    public void execute(UUID idCandidate, UUID idJob) {
+    public ApplyJobEntity  execute(UUID idCandidate, UUID idJob) {
         // Validar se o candidato existe
         this.candidateRepository.findById(idCandidate)
                 .orElseThrow(() -> {
@@ -39,5 +40,11 @@ public class ApplyJobCandidateUseCase {
                 });
 
         // Candidato se inscrever na vaga
+        var applyJob = ApplyJobEntity.builder()
+         .candidateId(idCandidate)
+         .jobId(idJob).build();
+ 
+         applyJob = applyJobRepository.save(applyJob);
+         return applyJob;
     }
 }

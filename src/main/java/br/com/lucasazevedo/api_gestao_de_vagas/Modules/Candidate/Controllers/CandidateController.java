@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.CandidateEntity;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.dto.ProfileCandidateResponseDTO;
+import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.entity.CandidateEntity;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.useCases.CreateCandidateUseCase;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.useCases.ListAllJobsByFilterUseCase;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.useCases.ProfileCandidateUseCase;

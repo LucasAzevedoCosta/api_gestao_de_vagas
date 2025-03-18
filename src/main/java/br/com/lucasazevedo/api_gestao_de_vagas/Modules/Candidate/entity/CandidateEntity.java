@@ -1,4 +1,4 @@
-package br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate;
+package br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.entity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

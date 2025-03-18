@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.CandidateRepository;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.dto.ProfileCandidateResponseDTO;
+import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.repository.CandidateRepository;
 
 @Service
 public class ProfileCandidateUseCase {

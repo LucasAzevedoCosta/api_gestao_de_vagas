@@ -12,8 +12,8 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.CandidateEntity;
-import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.CandidateRepository;
+import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.entity.CandidateEntity;
+import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.repository.CandidateRepository;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.useCases.ApplyJobCandidateUseCase;
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Company.repositories.JobRepository;
 import br.com.lucasazevedo.api_gestao_de_vagas.exceptions.JobNotFoundException;

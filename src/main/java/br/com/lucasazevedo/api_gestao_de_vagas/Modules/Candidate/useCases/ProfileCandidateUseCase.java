@@ -22,7 +22,7 @@ public class ProfileCandidateUseCase {
                 });
 
         var candidateDTO = ProfileCandidateResponseDTO.builder()
-                .description(candidate.getDescripition())
+                .description(candidate.getDescription())
                 .username(candidate.getUsername())
                 .email(candidate.getEmail())
                 .name(candidate.getName())

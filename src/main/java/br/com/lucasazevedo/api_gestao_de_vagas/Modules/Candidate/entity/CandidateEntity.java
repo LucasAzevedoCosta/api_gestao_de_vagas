@@ -15,9 +15,17 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "Candidate")
 public class CandidateEntity {
 
@@ -41,7 +49,7 @@ public class CandidateEntity {
     private String password;
 
     @Schema(example = "admin@1234", minLength = 10, maxLength = 100, requiredMode = RequiredMode.REQUIRED, description = "Senha do candidato")
-    private String descripition;
+    private String description;
     private String curriculum;
 
     @CreationTimestamp()

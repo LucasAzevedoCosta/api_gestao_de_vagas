@@ -1,16 +1,18 @@
 package br.com.lucasazevedo.api_gestao_de_vagas.modules.candidate.useCases;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import br.com.lucasazevedo.api_gestao_de_vagas.Modules.Candidate.entity.ApplyJobEntity;
@@ -66,18 +68,18 @@ public class ApplyJobCandidateUseCaseTest {
 
     @Test
     public void should_be_able_to_create_a_new_apply_job() {
-        var idCandidate = UUID.randomUUID();
+         var idCandidate = UUID.randomUUID();
         var idJob = UUID.randomUUID();
 
-        var applyJob = ApplyJobEntity.builder().candidateId(idCandidate)
-                .jobId(idJob).build();
-
-        var applyJobCreated = ApplyJobEntity.builder().id(UUID.randomUUID()).build();
+        var applyJobCreated = ApplyJobEntity.builder()
+                .id(UUID.randomUUID())
+                .build();
 
         when(candidateRepository.findById(idCandidate)).thenReturn(Optional.of(new CandidateEntity()));
         when(jobRepository.findById(idJob)).thenReturn(Optional.of(new JobEntity()));
 
-        when(applyJobRepository.save(applyJob)).thenReturn(applyJobCreated);
+        // Utilizando ArgumentMatchers.any() para flexibilizar o stubbing
+        when(applyJobRepository.save(any(ApplyJobEntity.class))).thenReturn(applyJobCreated);
 
         var result = applyJobCandidateUseCase.execute(idCandidate, idJob);
 
